@@ -2,7 +2,7 @@
 
 DOM-built animated components for React.
 
-This repo starts with a cursor-following quadcopter extracted from `drone-ai-web`. The drone is not an image, canvas, or SVG asset. It is a layered DOM component styled with CSS gradients, borders, transforms, shadows, and CSS variables.
+This repo starts with a cursor-following quadcopter. The drone is not an image, canvas, or SVG asset. It is a layered DOM component styled with CSS gradients, borders, transforms, shadows, and CSS variables.
 
 ## Current Package
 
