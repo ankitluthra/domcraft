@@ -4,6 +4,8 @@
   "private": true,
   "packageManager": "pnpm@9.15.4",
   "scripts": {
+    "docs:dev": "pnpm --filter @domcraft/docs dev",
+    "docs:build": "pnpm --filter @domcraft/docs build",
     "build": "pnpm --filter @domcraft/react build",
     "lint": "pnpm --filter @domcraft/react lint",
     "typecheck": "pnpm --filter @domcraft/react typecheck"

@@ -1,0 +1,128 @@
+:root {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(34, 211, 238, 0.14), transparent 38%),
+    radial-gradient(circle at 10% 22%, rgba(251, 113, 133, 0.14), transparent 42%),
+    #f4f7fb;
+  color: #132031;
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.docs-root {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 20px 18px 64px;
+}
+
+.hero {
+  margin-top: 24px;
+  min-height: 58vh;
+  padding: 24px 0 40px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  margin: 0;
+  max-width: 14ch;
+}
+
+.lede {
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 18px 0 0;
+  max-width: 62ch;
+}
+
+.hero-actions {
+  margin-top: 22px;
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(18, 28, 45, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(8, 16, 34, 0.08);
+  grid-column: span 12;
+  padding: 16px;
+}
+
+.panel h2 {
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+.panel p {
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.panel pre {
+  background: #0e1728;
+  border-radius: 8px;
+  color: #d9e6ff;
+  margin: 0;
+  overflow-x: auto;
+  padding: 12px;
+}
+
+.text-zone p {
+  max-width: 74ch;
+}
+
+.theme-lab .theme-preview {
+  align-items: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.22), rgba(15, 23, 42, 0.9)),
+    #111827;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+  min-height: 220px;
+}
+
+.theme-preview-inner {
+  --domcraft-drone-accent: #f97316;
+  --domcraft-drone-body-light: #fef2f2;
+  --domcraft-drone-body-mid: #f43f5e;
+  --domcraft-drone-body-dark: #7f1d1d;
+  height: 124px;
+  width: 124px;
+}
+
+.theme-preview-inner .domcraft-quadcopter {
+  filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.42));
+}
+
+@media (min-width: 900px) {
+  .panel:nth-of-type(1),
+  .panel:nth-of-type(2) {
+    grid-column: span 6;
+  }
+}

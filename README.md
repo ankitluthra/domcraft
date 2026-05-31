@@ -33,8 +33,6 @@ This folder is intentionally a starter repo. The next Codex session should:
 
 See:
 
-- `docs/CODEX_PLAN.md`
-- `docs/HANDOFF.md`
 - `docs/cursor-drone.md`
 
 ## Philosophy

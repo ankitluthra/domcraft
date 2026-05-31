@@ -38,6 +38,7 @@ const MOTION_PRESETS = {
 
 export function CursorDrone({
   className,
+  colorMode = "auto",
   defaultEnabled = true,
   enabled: controlledEnabled,
   keyboardShortcut = true,
@@ -49,7 +50,9 @@ export function CursorDrone({
   readableContentSelector,
   size = 96,
   storageKey = DEFAULT_STORAGE_KEY,
+  textLayering = "above-text",
   textAware = true,
+  zIndexBehindText = 1,
   zIndex = 5,
 }: CursorDroneProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -57,6 +60,7 @@ export function CursorDrone({
   const [uncontrolledEnabled, setUncontrolledEnabled] = useState(defaultEnabled);
   const [isOverReadableContent, setIsOverReadableContent] = useState(false);
   const [rotorPhase, setRotorPhase] = useState<RotorPhase>("idle");
+  const [resolvedColorMode, setResolvedColorMode] = useState<"dark" | "light">("dark");
   const droneRef = useRef<HTMLDivElement>(null);
   const enabledRef = useRef(defaultEnabled);
   const isControlled = controlledEnabled !== undefined;
@@ -111,6 +115,19 @@ export function CursorDrone({
       setHasMounted(true);
     }, 0);
   }, [controlledEnabled, defaultEnabled, isControlled, persist, pointerX, pointerY, storageKey]);
+
+  useEffect(() => {
+    if (colorMode !== "auto") {
+      setResolvedColorMode(colorMode);
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncMode = () => setResolvedColorMode(mediaQuery.matches ? "dark" : "light");
+    syncMode();
+    mediaQuery.addEventListener("change", syncMode);
+    return () => mediaQuery.removeEventListener("change", syncMode);
+  }, [colorMode]);
 
   useEffect(() => {
     enabledRef.current = enabled;
@@ -314,15 +331,19 @@ export function CursorDrone({
     return null;
   }
 
+  const effectiveZIndex =
+    textLayering === "behind-text" && isOverReadableContent ? zIndexBehindText : zIndex;
+
   return (
     <motion.div
       aria-hidden="true"
       className={cx("domcraft-cursor-drone-frame", className)}
+      data-domcraft-color-mode={resolvedColorMode}
       initial={false}
       style={
         {
           "--domcraft-cursor-drone-size": `${size}px`,
-          "--domcraft-cursor-drone-z-index": zIndex,
+          "--domcraft-cursor-drone-z-index": effectiveZIndex,
           opacity: enabled && !prefersReducedMotion ? 1 : 0,
           x,
           y,
