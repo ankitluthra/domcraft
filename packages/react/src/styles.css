@@ -1,0 +1,323 @@
+.domcraft-cursor-drone-frame {
+  height: var(--domcraft-cursor-drone-size, 96px);
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 300ms ease;
+  width: var(--domcraft-cursor-drone-size, 96px);
+  z-index: var(--domcraft-cursor-drone-z-index, 5);
+}
+
+.domcraft-cursor-drone {
+  --domcraft-drone-bank: 0deg;
+  --domcraft-drone-heading: 0deg;
+  --domcraft-drone-pitch: 0deg;
+  --domcraft-rotor-angle: 0deg;
+  --domcraft-rotor-angle-reverse: 0deg;
+  --domcraft-drone-accent: #67e8f9;
+  --domcraft-drone-body-light: #f8fafc;
+  --domcraft-drone-body-mid: #64748b;
+  --domcraft-drone-body-dark: #1e293b;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--domcraft-drone-accent) 24%, transparent))
+    drop-shadow(0 14px 18px rgba(0, 0, 0, 0.42));
+  height: 100%;
+  opacity: var(--domcraft-cursor-drone-opacity, 0.7);
+  position: relative;
+  transition: opacity 300ms ease;
+  width: 100%;
+}
+
+.domcraft-cursor-drone--quad {
+  transform: perspective(720px) rotateZ(calc(var(--domcraft-drone-heading) - 12deg))
+    rotateX(var(--domcraft-drone-pitch)) rotateY(var(--domcraft-drone-bank));
+  transform-style: preserve-3d;
+}
+
+.domcraft-cursor-drone--active {
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--domcraft-drone-accent) 34%, transparent))
+    drop-shadow(0 16px 22px rgba(0, 0, 0, 0.48));
+}
+
+.domcraft-cursor-drone--settling {
+  filter: drop-shadow(0 0 15px color-mix(in srgb, var(--domcraft-drone-accent) 28%, transparent))
+    drop-shadow(0 14px 20px rgba(0, 0, 0, 0.44));
+}
+
+.domcraft-quadcopter {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.domcraft-quadcopter__nose {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.9), rgba(148, 163, 184, 0.84));
+  border-radius: 999px 999px 40% 40%;
+  box-shadow: inset 0 -5px 10px rgba(15, 23, 42, 0.35);
+  height: 18%;
+  left: 50%;
+  position: absolute;
+  top: 28%;
+  transform: translateX(-50%) translateZ(12px);
+  width: 20%;
+}
+
+.domcraft-quadcopter__body {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.36), transparent 38%),
+    linear-gradient(
+      180deg,
+      var(--domcraft-drone-body-light) 0%,
+      #cbd5e1 22%,
+      var(--domcraft-drone-body-mid) 58%,
+      var(--domcraft-drone-body-dark) 100%
+    );
+  border-radius: 999px 999px 34% 34%;
+  box-shadow:
+    inset -8px -8px 16px rgba(15, 23, 42, 0.55),
+    0 0 24px color-mix(in srgb, var(--domcraft-drone-accent) 18%, transparent);
+  height: 38%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24%;
+}
+
+.domcraft-quadcopter__camera {
+  background: radial-gradient(circle at 50% 70%, #020617 0 30%, #334155 31% 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--domcraft-drone-accent) 26%, transparent);
+  height: 9%;
+  left: 50%;
+  position: absolute;
+  top: 64%;
+  transform: translateX(-50%);
+  width: 13%;
+}
+
+.domcraft-quadcopter__arm {
+  background: linear-gradient(90deg, rgba(71, 85, 105, 0.72), #cbd5e1 50%, rgba(71, 85, 105, 0.72));
+  border-radius: 999px;
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  width: 84%;
+}
+
+.domcraft-quadcopter__arm--diagonal-a {
+  transform: translate(-50%, -50%) rotate(38deg);
+}
+
+.domcraft-quadcopter__arm--diagonal-b {
+  transform: translate(-50%, -50%) rotate(-38deg);
+}
+
+.domcraft-quadcopter__rotor {
+  background:
+    radial-gradient(circle, rgba(15, 23, 42, 0.94) 0 18%, transparent 19%),
+    radial-gradient(circle, color-mix(in srgb, var(--domcraft-drone-accent) 12%, transparent), transparent 62%);
+  border: 1px solid rgba(203, 213, 225, 0.34);
+  border-radius: 999px;
+  height: 28%;
+  position: absolute;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  width: 28%;
+}
+
+.domcraft-cursor-drone--active .domcraft-quadcopter__rotor {
+  border-color: color-mix(in srgb, var(--domcraft-drone-accent) 58%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--domcraft-drone-accent) 20%, transparent);
+}
+
+.domcraft-cursor-drone--settling .domcraft-quadcopter__rotor {
+  border-color: color-mix(in srgb, var(--domcraft-drone-accent) 40%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--domcraft-drone-accent) 14%, transparent);
+}
+
+.domcraft-quadcopter__rotor--tl {
+  left: 1%;
+  top: 7%;
+}
+
+.domcraft-quadcopter__rotor--tr {
+  right: 1%;
+  top: 7%;
+}
+
+.domcraft-quadcopter__rotor--bl {
+  bottom: 7%;
+  left: 1%;
+}
+
+.domcraft-quadcopter__rotor--br {
+  bottom: 7%;
+  right: 1%;
+}
+
+.domcraft-quadcopter__rotor-spin {
+  inset: 0;
+  position: absolute;
+  transform: rotate(var(--domcraft-rotor-angle));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.domcraft-quadcopter__rotor--tr .domcraft-quadcopter__rotor-spin,
+.domcraft-quadcopter__rotor--bl .domcraft-quadcopter__rotor-spin {
+  transform: rotate(var(--domcraft-rotor-angle-reverse));
+}
+
+.domcraft-quadcopter__propeller {
+  background: linear-gradient(90deg, transparent, rgba(226, 232, 240, 0.86), transparent);
+  border-radius: 999px;
+  filter: blur(0.2px);
+  height: 3px;
+  left: 50%;
+  opacity: 0.78;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  transition:
+    opacity 180ms ease,
+    filter 180ms ease,
+    width 180ms ease;
+  width: 110%;
+}
+
+.domcraft-cursor-drone--active .domcraft-quadcopter__propeller {
+  filter: blur(1.2px);
+  opacity: 0.96;
+  width: 126%;
+}
+
+.domcraft-cursor-drone--settling .domcraft-quadcopter__propeller {
+  filter: blur(0.55px);
+  opacity: 0.86;
+  width: 118%;
+}
+
+.domcraft-quadcopter__propeller--a {
+  transform: translate(-50%, -50%) rotate(18deg);
+}
+
+.domcraft-quadcopter__propeller--b {
+  transform: translate(-50%, -50%) rotate(108deg);
+}
+
+.domcraft-quadcopter__motor {
+  background: radial-gradient(circle, #cbd5e1 0 18%, #475569 19% 58%, #0f172a 59% 100%);
+  border-radius: 999px;
+  box-shadow: inset -2px -3px 5px rgba(0, 0, 0, 0.35);
+  height: 38%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 38%;
+}
+
+.domcraft-quadcopter__motor::after {
+  background: rgba(226, 232, 240, 0.78);
+  border-radius: 999px;
+  content: "";
+  inset: 35%;
+  position: absolute;
+}
+
+.domcraft-quadcopter__hub {
+  background: #e2e8f0;
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(226, 232, 240, 0.55);
+  height: 7px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 7px;
+}
+
+.domcraft-quadcopter__scan {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--domcraft-drone-accent) 20%, transparent), transparent);
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  height: 78%;
+  left: 50%;
+  opacity: 0.72;
+  position: absolute;
+  top: 56%;
+  transform: translateX(-50%);
+  transition: opacity 180ms ease;
+  width: 42%;
+}
+
+.domcraft-cursor-drone--active .domcraft-quadcopter__scan {
+  opacity: 1;
+}
+
+.domcraft-cursor-drone--settling .domcraft-quadcopter__scan {
+  opacity: 0.84;
+}
+
+.domcraft-drone-toggle {
+  align-items: center;
+  background: rgba(2, 6, 23, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #cbd5e1;
+  cursor: pointer;
+  display: inline-flex;
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  gap: 8px;
+  height: 36px;
+  justify-content: flex-start;
+  letter-spacing: 0.06em;
+  overflow: hidden;
+  padding: 0 10px;
+  text-transform: uppercase;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+  white-space: nowrap;
+}
+
+.domcraft-drone-toggle:hover,
+.domcraft-drone-toggle:focus-visible {
+  background: rgba(2, 6, 23, 0.62);
+  border-color: color-mix(in srgb, var(--domcraft-drone-accent, #67e8f9) 34%, transparent);
+  color: #fff;
+}
+
+.domcraft-drone-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--domcraft-drone-accent, #67e8f9) 62%, transparent);
+  outline-offset: 2px;
+}
+
+.domcraft-drone-toggle__icon {
+  color: var(--domcraft-drone-accent, #67e8f9);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.domcraft-drone-toggle__shortcut {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: #94a3b8;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 2px 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .domcraft-cursor-drone-frame,
+  .domcraft-cursor-drone,
+  .domcraft-cursor-drone *,
+  .domcraft-drone-toggle {
+    transition-duration: 0.01ms !important;
+  }
+}

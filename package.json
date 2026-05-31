@@ -1,0 +1,19 @@
+{
+  "name": "domcraft-repo",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "pnpm --filter @domcraft/react build",
+    "lint": "pnpm --filter @domcraft/react lint",
+    "typecheck": "pnpm --filter @domcraft/react typecheck"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

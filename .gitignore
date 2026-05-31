@@ -1,0 +1,16 @@
+node_modules
+dist
+docs
+.turbo
+.next
+coverage
+*.log
+*agents.*
+.DS_Store
+
+packages/*/dist
+apps/*/.next
+apps/*/dist
+examples/*/.next
+examples/*/dist
+
