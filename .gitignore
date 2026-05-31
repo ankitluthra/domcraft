@@ -1,6 +1,6 @@
 node_modules
 dist
-docs
+docs-internal/
 .turbo
 .next
 coverage
@@ -11,6 +11,6 @@ coverage
 packages/*/dist
 apps/*/.next
 apps/*/dist
+apps/*/tsconfig.tsbuildinfo
 examples/*/.next
 examples/*/dist
-

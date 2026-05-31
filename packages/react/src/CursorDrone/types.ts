@@ -4,6 +4,7 @@ export type CursorDroneChangeSource = "keyboard" | "toggle" | "programmatic";
 
 export type CursorDroneProps = {
   className?: string;
+  colorMode?: "auto" | "dark" | "light";
   defaultEnabled?: boolean;
   enabled?: boolean;
   keyboardShortcut?: boolean;
@@ -15,7 +16,9 @@ export type CursorDroneProps = {
   readableContentSelector?: string;
   size?: number;
   storageKey?: string;
+  textLayering?: "above-text" | "behind-text";
   textAware?: boolean;
+  zIndexBehindText?: number;
   zIndex?: number;
 };
 
